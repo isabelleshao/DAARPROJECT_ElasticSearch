@@ -2,9 +2,14 @@ package com.daar.POC_LHOM.helper;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.Set;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -14,8 +19,10 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 public class Utils {
+	
 
-	public static String readPDFFile(File fileName) {
+
+	public static String parsePDFFile(File fileName) {
 		String text  ="";
 		
 		try {
@@ -77,5 +84,12 @@ public class Utils {
 		}
 
 	}
+	
+public static Set<String> extractSkills(String s) {
+	Set<String> language  = new HashSet<>();
+	
+	return language ; 
+	 
+}
 
 }

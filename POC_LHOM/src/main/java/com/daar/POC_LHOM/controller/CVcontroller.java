@@ -9,11 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.daar.POC_LHOM.document.CV;
+import com.daar.POC_LHOM.helper.Utils;
 import com.daar.POC_LHOM.services.SearchService;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URI;
 import java.util.List;
 
 
@@ -87,7 +94,53 @@ public class CVcontroller {
 		return ResponseEntity.ok(service.get_CV_contain_words(words));
 	}
 
-	
+
+    //Creation du CV à partir d'un formulaire
+    //CV/file
+    @PostMapping("/file")
+    public void send_pdf(@RequestPart("file") MultipartFile file,
+                                        @RequestPart("nom") String nom,
+                                        @RequestPart("prenom") String prenom,
+                                        @RequestPart("email") String email,
+                                        @RequestPart("tel") String tel)
+            throws IOException {
+
+        // La conversion d'un multipartfile en file. Mettre dans une methode dans le parsingPDF
+        File convFile = new File( file.getOriginalFilename());
+        
+        
+        
+        
+        FileOutputStream fos = new FileOutputStream( convFile );
+        fos.write( file.getBytes() );
+        fos.close();
+        
+        
+        String text = "";
+
+        CV cv = new CV(); 
+
+        if(convFile.getPath().split("\\.")[1].equals("pdf")) {
+        	 text =Utils.parsePDFFile(convFile);
+ 
+        }
+
+           cv.setContent(text); 
+           cv.setNom(nom);
+           cv.setPrenom(prenom); 
+           cv.setEmail(email);
+           cv.setTel(tel); 
+        
+           
+           System.out.println(text);
+           service.save(cv); 
+        
+        
+
+        // ResponseEntity.created(URI.create("/api/v1/lhom")).body(service.save(cv));
+    }
+
+
 	
 	
 

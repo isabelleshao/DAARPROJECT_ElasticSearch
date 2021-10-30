@@ -35,3 +35,15 @@ curl http://127.0.0.1:8080/api/v1/lhom?nom=shao&prenom=isabelle
 curl http://127.0.0.1:8080/api/v1/lhom
 
 
+
+
+curl -X POST http://127.0.0.1:8080/api/v1/lhom/file -H 'Content-Type: multipart/form-data' -d '{ "file":"/home/isa/Documents/GitHub/DAARPROJECT_ElasticSearch/CV/01.pdf"}'
+
+
+
+curl -v -F filename=/home/isa/Documents/GitHub/DAARPROJECT_ElasticSearch/CV/01.pdf -F upload=@i http://localhost:8080/api/upload
+
+
+curl -i -X POST -H "Content-Type: multipart/form-data" -F "data=@/home/isa/Documents/GitHub/DAARPROJECT_ElasticSearch/CV/01.pdf" http://127.0.0.1:8080/api/v1/lhom/file
+
+

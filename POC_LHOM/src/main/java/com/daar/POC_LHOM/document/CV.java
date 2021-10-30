@@ -26,14 +26,19 @@ public class CV {
 	private String prenom;
 
 	
-	@Field(type = FieldType.Keyword)
+	@Field(type = FieldType.Text)
 	private String email;
 	
-	@Field(type = FieldType.Keyword)
+	@Field(type = FieldType.Text)
 	private String tel;
 	
 	@Field(type = FieldType.Text)
 	private String content;
+	
+
+	
+	
+	
 	
 	
 	public String getContent() {
@@ -52,7 +57,6 @@ public class CV {
 		this.tags = tags;
 	}
 
-	@Field(type = FieldType.Keyword)
 	private ArrayList<String> tags;
 
 	public String getId() {
