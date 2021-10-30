@@ -1,5 +1,7 @@
 package com.daar.POC_LHOM.document;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -12,41 +14,92 @@ import com.daar.POC_LHOM.helper.Indices;
 @Document(indexName = Indices.CV_INDEX)
 @Setting(settingPath = "static/es-settings.json")
 public class CV {
+
+	@Id
+	@Field(type = FieldType.Keyword)
+	private String id;
 	
-	  @Id
-	    @Field(type = FieldType.Keyword)
-	    private String id;
-	    @Field(type = FieldType.Text)
-	    private String title;
-	    @Field(type = FieldType.Text)
-	    private String content;
-	    @Field(type = FieldType.Text)
-	    private String author;
-	    
-	   
-	    public String getId() {
-	        return id;
-	    }
+	@Field(type = FieldType.Text)
+	private String nom;
+	
+	@Field(type = FieldType.Text)
+	private String prenom;
 
-	    public void setId(String id) {
-	        this.id = id;
-	    }
+	
+	@Field(type = FieldType.Keyword)
+	private String email;
+	
+	@Field(type = FieldType.Keyword)
+	private String tel;
+	
+	@Field(type = FieldType.Text)
+	private String content;
+	
+	
+	public String getContent() {
+		return content;
+	}
 
-	    public String getTitle() {
-	        return title;
-	    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-	    public void setTitle(String title) {
-	        this.title = title;
-	    }
+	public ArrayList<String> getTags() {
+		return tags;
+	}
 
-	    public String getContent() {
-	        return content;
-	    }
+	public void setTags(ArrayList<String> tags) {
+		this.tags = tags;
+	}
 
-	    public void setContent(String content) {
-	        this.content = content;
-	    }
+	@Field(type = FieldType.Keyword)
+	private ArrayList<String> tags;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
 
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	
+
+
+	
+	
+	
 }
