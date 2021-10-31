@@ -1,6 +1,6 @@
 package com.daar.POC_LHOM;
 
-import com.daar.POC_LHOM.document.CV;
+import com.daar.POC_LHOM.model.CV;
 
 public class Testing {
 
