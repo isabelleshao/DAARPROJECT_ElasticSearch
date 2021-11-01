@@ -11,13 +11,13 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ParseCV {
-    public static int extractAge(String content){
+    public static String extractAge(String content){
         Pattern regEx= Pattern.compile("([0-9]{2}) *ans");
         Matcher matcher = regEx.matcher(content);
         if(matcher.find())
-            return Integer.parseInt(matcher.group(1));
+            return matcher.group(1);
 
-        return -1;
+        return "";
     }
 
     public static ArrayList<String> extractWords(String content){

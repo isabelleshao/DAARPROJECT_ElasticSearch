@@ -30,6 +30,7 @@ public class SearchServiceImp implements SearchService{
 		repository.save(cv);
 	}
 
+	/*
 	@Override
 	public List<CV> getCvFromTo(int from, int to) {
 		Iterable<CV> iterable = repository.findAll();
@@ -45,6 +46,7 @@ public class SearchServiceImp implements SearchService{
 		}
 		return ret;
 	}
+	 */
 
 
 	@Override
@@ -70,6 +72,12 @@ public class SearchServiceImp implements SearchService{
 	public List<CV> getCvFamilyName(String familyName) {
 		System.out.println(familyName);
 		return repository.getCvFamilyName(familyName);
+	}
+
+	@Override
+	public List<CV> getCvByAge(String age) {
+		System.out.println(age);
+		return repository.getCvByAge(age);
 	}
 /*
 	@Override

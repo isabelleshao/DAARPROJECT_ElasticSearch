@@ -42,7 +42,7 @@ public class CV {
 	private String content;
 
 	@Getter @Setter
-	private int age;
+	private String age;
 
 	@Getter @Setter
 	private List<String> skills;

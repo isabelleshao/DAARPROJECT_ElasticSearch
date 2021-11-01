@@ -37,15 +37,16 @@ public class CvController {
 		log.info("Delete Cv is starting");
 		service.deleteCv(id);
 	}
-
+/*
 	@ApiOperation(value = "Returns a list of Cv")
 	@GetMapping("/List/FromTo")
 	public ResponseEntity<List<CV>> getCvFromTo(@RequestParam int from,@RequestParam  int to) {
 		log.info("Getting Cv from to is starting");
 		return ResponseEntity.ok(service.getCvFromTo(from, to));
 	}
+ */
 
-	@ApiOperation(value = "Search CV's by Tag. For example: [Tag = java -> returns all CV which includes java.]")
+	@ApiOperation(value = "Search CVs by Tag. For example: [Tag = java -> returns all CV which includes java.]")
 	@GetMapping("/List/Tag")
 	public ResponseEntity<List<CV>> getCvByTag(@RequestParam String tag) {
 		log.info("Getting Tag is starting");
@@ -59,18 +60,25 @@ public class CvController {
 		return ResponseEntity.ok(service.getCvAll());
 	}
 
-	@ApiOperation(value = "Returns Cv using FirstName")
+	@ApiOperation(value = "Search CVs by first name field")
 	@GetMapping("/List/FirstName")
 	public ResponseEntity<List<CV>> getCvFirstName(@RequestParam String firstName) {
 		log.info("Getting Cv By First Name is starting");
 		return ResponseEntity.ok(service.getCvFirstName(firstName));
 	}
 
-	@ApiOperation(value = "Returns Cv using FamilyName")
+	@ApiOperation(value = "Search CVs by family name field")
 	@GetMapping("/List/FamilyName")
 	public ResponseEntity<List<CV>> getCvFamilyName(@RequestParam String familyName) {
 		log.info("Getting Cv By Family Name is starting");
 		return ResponseEntity.ok(service.getCvFamilyName(familyName));
+	}
+
+	@ApiOperation(value = "Search CVs by age field")
+	@GetMapping("/List/Age")
+	public ResponseEntity<List<CV>> getCvByAge(@RequestParam String age) {
+		log.info("Getting Cv By Age is starting");
+		return ResponseEntity.ok(service.getCvByAge(age));
 	}
 /*
 	@ApiOperation(value = "Returns Cvs which contain a specific word")
