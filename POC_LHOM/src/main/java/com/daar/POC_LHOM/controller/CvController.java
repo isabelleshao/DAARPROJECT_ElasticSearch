@@ -45,11 +45,11 @@ public class CvController {
 		return ResponseEntity.ok(service.getCvFromTo(from, to));
 	}
 
-	@ApiOperation(value = "BLA")
+	@ApiOperation(value = "Search CV's by Tag. For example: [Tag = java -> returns all CV which includes java.]")
 	@GetMapping("/List/Tag")
-	public ResponseEntity<List<CV>> getCvTag(@RequestParam String tag) {
+	public ResponseEntity<List<CV>> getCvByTag(@RequestParam String tag) {
 		log.info("Getting Tag is starting");
-		return ResponseEntity.ok(service.getCvTag(tag));
+		return ResponseEntity.ok(service.getCvByTag(tag));
 	}
 
 	@ApiOperation(value = "Returns All Cvs")
@@ -72,14 +72,14 @@ public class CvController {
 		log.info("Getting Cv By Family Name is starting");
 		return ResponseEntity.ok(service.getCvFamilyName(familyName));
 	}
-
+/*
 	@ApiOperation(value = "Returns Cvs which contain a specific word")
 	@GetMapping("/List/ContainingWords")
 	public ResponseEntity<List<CV>> searchCVByKeyWord(@RequestParam String word) {
 		log.info("Getting Cvs which contain a specific word is starting");
 		return ResponseEntity.ok(service.searchCVByKeyWord(word));
 	}
-
+ */
 	@ApiOperation(value = "Create Profile")
 	@PostMapping("/CreateProfile")
 	public void createProfile(@RequestParam MultipartFile file,@RequestParam  String familyName, @RequestParam String firstName,@RequestParam String email,@RequestParam  String phoneNumber){

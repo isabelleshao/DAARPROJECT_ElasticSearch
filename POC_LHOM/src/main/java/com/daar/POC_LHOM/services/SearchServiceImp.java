@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import com.daar.POC_LHOM.helper.ParseCV;
 import com.daar.POC_LHOM.helper.Utils;
@@ -47,9 +48,12 @@ public class SearchServiceImp implements SearchService{
 
 
 	@Override
-	public List<CV> getCvTag(String tag) {
-		return repository.getCvTag(tag);
-		}
+	public List<CV> getCvByTag(String tag) {
+		if(tag.equals("asp.net".toLowerCase(Locale.ENGLISH))) tag = "aspdotnet";
+		else if(tag.equals("c#".toLowerCase(Locale.ENGLISH))) tag = "csharp";
+		else if(tag.equals("c++".toLowerCase(Locale.ENGLISH)))  tag = "cpp";
+		return repository.getCvByTag(tag);
+	}
 
 	@Override
 	public List<CV>  getCvAll() {
@@ -67,12 +71,13 @@ public class SearchServiceImp implements SearchService{
 		System.out.println(familyName);
 		return repository.getCvFamilyName(familyName);
 	}
-
+/*
 	@Override
 	public  List<CV> searchCVByKeyWord(String word) {
+
 		return repository.searchCVByKeyWord(word);
 	}
-
+ */
 	@Override
 	public void deleteCv(String id) {
 		boolean b = repository.existsById(id);

@@ -25,8 +25,13 @@ public class ParseCV {
 
         for(String word : content.split(" |/|-|\\(|\\)|,")){
             try{
-                if(!word.toLowerCase(Locale.ENGLISH).matches("| |:|\\|"))
-                    words.add(word.toLowerCase(Locale.ENGLISH));
+                String newWord = word.toLowerCase(Locale.ENGLISH).replace("\n", "");
+                if(!newWord.matches("| |:|\\|")) {
+                    if(newWord.equals("asp.net".toLowerCase(Locale.ENGLISH))) words.add("aspdotnet");
+                    else if(newWord.equals("c#".toLowerCase(Locale.ENGLISH))) words.add("csharp");
+                    else if(newWord.equals("c++".toLowerCase(Locale.ENGLISH))) words.add("cpp");
+                    else words.add(newWord);
+                }
             }catch (IllegalArgumentException e){
                 continue;
             }

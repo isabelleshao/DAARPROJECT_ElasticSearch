@@ -3,8 +3,9 @@ lua
 matlab
 nosql
 c
-C#
-C++
+csharp
+cpp
+aspdotnet
 caml
 clojure
 cofeescript
