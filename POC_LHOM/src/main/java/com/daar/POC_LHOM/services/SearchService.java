@@ -12,7 +12,7 @@ public interface SearchService {
     List<CV> getCvAll();
     List<CV> getCvFirstName(String firstName);
     List<CV> getCvFamilyName(String familyName);
-    List<CV> getCvContainWords(String words);
+    List<CV> searchCVByKeyWord(String word);
     void deleteCv(String id);
     void saveCVFromFile(MultipartFile file, String firstName, String familyName, String email, String phoneNumber);
 }

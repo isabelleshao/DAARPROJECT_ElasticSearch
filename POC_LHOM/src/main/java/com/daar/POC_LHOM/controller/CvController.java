@@ -61,7 +61,7 @@ public class CvController {
 
 	@ApiOperation(value = "Returns Cv using FirstName")
 	@GetMapping("/List/FirstName")
-	public ResponseEntity<List<CV>> getCvFistName(@RequestParam String firstName) {
+	public ResponseEntity<List<CV>> getCvFirstName(@RequestParam String firstName) {
 		log.info("Getting Cv By First Name is starting");
 		return ResponseEntity.ok(service.getCvFirstName(firstName));
 	}
@@ -75,11 +75,10 @@ public class CvController {
 
 	@ApiOperation(value = "Returns Cvs which contain a specific word")
 	@GetMapping("/List/ContainingWords")
-	public ResponseEntity<List<CV>> getCvContainWords(@RequestParam String words) {
-		log.info("Getting Cvs By which contain a specific word is starting");
-		return ResponseEntity.ok(service.getCvContainWords(words));
+	public ResponseEntity<List<CV>> searchCVByKeyWord(@RequestParam String word) {
+		log.info("Getting Cvs which contain a specific word is starting");
+		return ResponseEntity.ok(service.searchCVByKeyWord(word));
 	}
-
 
 	@ApiOperation(value = "Create Profile")
 	@PostMapping("/CreateProfile")

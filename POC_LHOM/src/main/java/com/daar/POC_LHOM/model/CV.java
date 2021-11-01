@@ -1,11 +1,11 @@
 package com.daar.POC_LHOM.model;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -32,7 +32,6 @@ public class CV {
 	@Field(type = FieldType.Text)
 	private String firstName;
 
-	
 	@Field(type = FieldType.Text)
 	private String email;
 	
@@ -41,4 +40,13 @@ public class CV {
 	
 	@Field(type = FieldType.Text)
 	private String content;
+
+	@Getter @Setter
+	private int age;
+
+	@Getter @Setter
+	private List<String> skills;
+
+	@Getter @Setter
+	private List<String> contentWords;
 }

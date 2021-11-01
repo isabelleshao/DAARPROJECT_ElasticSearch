@@ -15,8 +15,7 @@ public interface CVRepository extends ElasticsearchRepository<CV, String> {
 
 	@Query("{\"bool\" : {  \"should\": [{\"match\": {  \"tags\": \"?0\"}  }]}  }")
 	List<CV> getCvTag(String tag);
-	
-	
+
 	@Query("{\"match_all\": {}}")	
 	List<CV> getCvAll();
 
@@ -26,8 +25,6 @@ public interface CVRepository extends ElasticsearchRepository<CV, String> {
 	@Query("{ \"match\": { \"familyName\": \"?0\"}}")
 	List<CV> getCvFamilyName(String familyName);
 
-
 	@Query("{\"match_phrase\": {\"content\": \"?0\"}  }")
-	List<CV> getCvContainWords(String words);
-
+	List<CV> searchCVByKeyWord(String word);
 }

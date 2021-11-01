@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.daar.POC_LHOM.helper.ParseCV;
 import com.daar.POC_LHOM.helper.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,8 +69,8 @@ public class SearchServiceImp implements SearchService{
 	}
 
 	@Override
-	public  List<CV> getCvContainWords(String words) {
-		return repository.getCvContainWords(words);
+	public  List<CV> searchCVByKeyWord(String word) {
+		return repository.searchCVByKeyWord(word);
 	}
 
 	@Override
@@ -88,16 +89,20 @@ public class SearchServiceImp implements SearchService{
 			fos.write( file.getBytes() );
 			fos.close();
 			String text = "";
-			if(convFile.getPath().split("\\.")[1].equals("pdf")) {
-				text = Utils.parsePDFFile(convFile);
-			}else {
-				text = Utils.parseDocxFile(convFile);
-			}
+			String fileExtension = convFile.getPath().split("\\.")[1];
+			if(fileExtension.equals("pdf")) text = Utils.readPDFFile(convFile);
+			else if(fileExtension.equals("docx")) text = Utils.readDocxFile(convFile);
+			else if (fileExtension.equals("doc")) text = Utils.readDocFile(convFile);
+
 			cv.setContent(text);
 			cv.setFamilyName(familyName);
 			cv.setFirstName(firstName);
 			cv.setEmail(email);
 			cv.setPhoneNumber(phoneNumber);
+			cv.setAge(ParseCV.extractAge(text));
+			cv.setContentWords(ParseCV.extractWords(text));
+			cv.setSkills(ParseCV.extractSkills(text, cv.getContentWords()));
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			log.error("Error In Save CV from File" + e.getMessage());
