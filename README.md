@@ -41,7 +41,7 @@ there are two interfaces for POST request, one for Delete request and five for G
 ![1](https://imgur.com/XnxwxJs.png)
 2. for each request, first click on "try in out" button, after that fill the required boxes as instructed and click on "Execute" button.
 
-POST /CV
+POST /CV -> For this part, fill the boxes as shown in the picture.
 ![2](https://imgur.com/mVoUYqt.png)
 
 GET /CV/List
