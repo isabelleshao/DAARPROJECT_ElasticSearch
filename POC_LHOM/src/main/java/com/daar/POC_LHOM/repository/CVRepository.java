@@ -28,7 +28,4 @@ public interface CVRepository extends ElasticsearchRepository<CV, String> {
 	@Query("{ \"match\": { \"age\": \"?0\"}}")
 	List<CV> getCvByAge(String age);
 
-	/*@Query("{\"match_phrase\": {\"content\": \"?0\"}  }")
-	List<CV> searchCVByKeyWord(String word);
-	 */
 }
