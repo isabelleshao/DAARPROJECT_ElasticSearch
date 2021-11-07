@@ -62,6 +62,8 @@ PART 2:
 6. Select the timestamp field and finish
 7. Go to Kibana
 8. Discover
+
+
 Now you're able to see the logs
 
 ![Kibana](https://imgur.com/fPNjjxX.png)
